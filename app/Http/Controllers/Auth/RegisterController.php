@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Auth;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -47,14 +50,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+    
 
     /**
      * Create a new user instance after a valid registration.
@@ -62,12 +58,68 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    
+    public function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
+            'age' => 'required'
         ]);
+   
+        if($validator->fails()){
+            return response()->json(['message' => $validator], 401);      
+        }
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => hash::make($request->password),
+            'age' => $request->age
+        ]);
+        $token = $user->createToken('Mini-Ecommerce')->accessToken;
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
+            $user = Auth::user(); 
+            $success['token'] =  $token;
+            $success['name'] =  $user->name;
+
+        
+ 
+        return response()->json([
+            'token' => $token,
+            'user' => $user,
+            'success' => 'User registered and logged in!'
+        ], 201);
+        }
+
     }
+
+
+    /**
+     * Handles Login Request
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(Request $request)
+    {
+        $userdetails = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        if(Auth::attempt($userdetails)){ 
+            $user = Auth::user(); 
+            $success['token'] =  $user->createToken('Mini Ecommerce')->accessToken; 
+            $success['name'] =  $user->name;
+            
+            return response()->json(['token' => $success,
+            'success' => 'User logged in successfully'], 200);;
+        } 
+        else{ 
+            return response()->json(['error' => 'UnAuthorised'], 401);
+        } 
+    }
+    
 }
