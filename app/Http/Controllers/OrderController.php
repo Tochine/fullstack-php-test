@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Coupon;
+use Auth;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -27,6 +29,11 @@ class OrderController extends Controller
         //
     }
 
+    public function getCoupons()
+    {
+        return
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,9 +41,10 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
+        {
+
+            
+        }
 
     /**
      * Display the specified resource.

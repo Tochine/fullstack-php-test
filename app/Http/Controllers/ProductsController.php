@@ -17,6 +17,12 @@ class ProductsController extends Controller
         return response()->json(Product::all(), 200);
     }
 
+    public function cart()  {
+        $cartCollection = \Cart::getContent();
+        dd($cartCollection);
+        //return view('cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
