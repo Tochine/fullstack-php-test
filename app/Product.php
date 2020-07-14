@@ -12,4 +12,9 @@ class Product extends Model
         protected $fillable = [
             'name', 'price', 'unit', 'description', 'image'
         ];
+
+        public function orders()
+        {
+            return $this->hasMany(Order::class);
+        }
 }
