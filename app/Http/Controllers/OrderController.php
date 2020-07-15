@@ -29,10 +29,7 @@ class OrderController extends Controller
         //
     }
 
-    public function getCoupons()
-    {
-        return
-    }
+   
 
     /**
      * Store a newly created resource in storage.

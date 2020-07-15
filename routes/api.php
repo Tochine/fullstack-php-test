@@ -21,8 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Product related routes
 
 Route::get('/products', 'ProductsController@index');
+Route::get('/view/{product}', 'ProductsController@show');
+Route::get('/cart', 'ProductsController@showCart');
+Route::get('/cart/{id}', 'ProductsController@addItemToCart');
 
 
 // API routes for user 
-Route::post('/login', 'UserController@login');
+Route::post('/login', 'Auth\RegisterController@login');
 Route::post('/register', 'Auth\RegisterController@register');

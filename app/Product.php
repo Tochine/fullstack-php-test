@@ -17,4 +17,9 @@ class Product extends Model
         {
             return $this->hasMany(Order::class);
         }
+
+        public function priceFormat()
+        {
+            return \money_format('$%i', $this->price / 100);
+        }
 }

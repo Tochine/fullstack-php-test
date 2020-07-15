@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\User;
+use App\Cart;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class ProductsController extends Controller
 {
@@ -17,10 +21,15 @@ class ProductsController extends Controller
         return response()->json(Product::all(), 200);
     }
 
-    public function cart()  {
-        $cartCollection = \Cart::getContent();
-        dd($cartCollection);
-        //return view('cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
+    public function addItemToCart(Request $request, $id)  
+    {
+
+        $product = Product::find($id);
+        $user = \Auth::user();
+        $cart = new Cart();   
+        $cart->addItem($product, $product->id);
+        return \response()->json(['message' => 'Item successfully added', $cart], 201);
+         
     }
 
     /**
@@ -52,8 +61,22 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::where('id', $id)->firstOrFail();
+        return \response()->json($product);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    // public function showCart()
+    // {
+    //     user = User::where('id', $id)->first();
+    //     $product = Product::where('id', $id)->firstOrFail();
+    //     return \response()->json($product);
+    // }
 
     /**
      * Show the form for editing the specified resource.

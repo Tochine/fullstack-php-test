@@ -10,9 +10,9 @@
     </head>
     <body>
         <div id="app">
-            <app></app>
+            <example-component></example-component>
         </div>
-        <script src="{{ mix('js/bootstrap.js') }}"></script>
+        {{-- <script src="{{ mix('js/bootstrap.js') }}"></script> --}}
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
