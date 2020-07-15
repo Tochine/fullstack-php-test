@@ -17,7 +17,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/blue-t-shirt.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 1500.00,
-                "units" => 45,
                 "created_at" => new DateTime
             ],
             [
@@ -25,7 +24,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/gold-zipper-on-black-fashion-backpack.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 1200.00,
-                "units" => 5,
                 "created_at" => new DateTime
             ],
             [
@@ -33,7 +31,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/watches-in-black-white.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 400.00,
-                "units" => 7,
                 "created_at" => new DateTime
             ],
             [
@@ -41,7 +38,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/yoga-accessories.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 400.00,
-                "units" => 12,
                 "created_at" => new DateTime
             ],
             [
@@ -49,7 +45,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/watches-in-black-white.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 400.00,
-                "units" => 7,
                 "created_at" => new DateTime
             ],
             [
@@ -57,7 +52,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/blue-t-shirt.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 1500.00,
-                "units" => 45,
                 "created_at" => new DateTime
             ],
             [
@@ -65,7 +59,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/yoga-accessories.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 400.00,
-                "units" => 12,
                 "created_at" => new DateTime
             ],
             [
@@ -73,7 +66,6 @@ class ProductsTableSeeder extends Seeder
                 "image" => 'public/product_img/gold-zipper-on-black-fashion-backpack.jpg',
                 "description" => "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
                 "price" => 1200.00,
-                "units" => 5,
                 "created_at" => new DateTime
             ],
         ]);
